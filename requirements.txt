@@ -1,8 +1,7 @@
 dash==2.18.2
 dash_bootstrap_components==1.6.0
 pandas==2.2.3
-plotly==5.24.1
 gunicorn
 dash-tools
-setuptools~=74.1.1
-packaging~=24.1
+setuptools>=57.0.0,<75.0.0
+packaging>=20.0,<24.0
