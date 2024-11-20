@@ -28,7 +28,7 @@ year_max = int(data['Retired year'].max()) if not data['Retired year'].isna().al
 
 # Initialize the Dash app with Bootstrap theme
 app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
-# server = app.server
+server = app.server
 # Layout of the Dash app
 app.layout = dbc.Container([
     dbc.Row([
