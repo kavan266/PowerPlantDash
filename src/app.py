@@ -1,11 +1,14 @@
+import os
 import pandas as pd
 import plotly.express as px
 from dash import Dash, dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 import math
 
-# Load the Excel file and the specific sheet
-file_path = './PowerPlants2024v2.xlsx'
+
+# Construct the relative path to abc.xlsx
+current_dir = os.path.dirname(__file__)
+file_path = os.path.join(current_dir,'PowerPlants2024v2.xlsx')
 about_sheet = pd.read_excel(file_path, sheet_name='About')
 data = pd.read_excel(file_path, sheet_name='Power facilities')
 
@@ -25,7 +28,7 @@ year_max = int(data['Retired year'].max()) if not data['Retired year'].isna().al
 
 # Initialize the Dash app with Bootstrap theme
 app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
-server = app.server
+# server = app.server
 # Layout of the Dash app
 app.layout = dbc.Container([
     dbc.Row([
