@@ -1,6 +1,5 @@
-dash==2.18.2
+dash==2.20.0
 dash_bootstrap_components==1.6.0
 pandas==2.2.3
 gunicorn
 dash-tools
-setuptools==70.0.0
