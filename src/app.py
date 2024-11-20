@@ -6,11 +6,16 @@ import dash_bootstrap_components as dbc
 import math
 
 
+
 # Construct the relative path to abc.xlsx
-current_dir = os.path.dirname(__file__)
-file_path = os.path.join(current_dir,'PowerPlants2024v2.xlsx')
-about_sheet = pd.read_excel(file_path, sheet_name='About')
-data = pd.read_excel(file_path, sheet_name='Power facilities')
+# current_dir = os.path.dirname(__file__)
+# file_path = os.path.join(current_dir,'PowerPlants2024v2.xlsx')
+# about_sheet = pd.read_excel(file_path, sheet_name='About')
+# data = pd.read_excel(file_path, sheet_name='Power facilities')
+url="https://github.com/kavan266/PowerPlantDash/raw/refs/heads/main/src/PowerPlants2024v2.xlsx"
+
+data = pd.read_excel(url, sheet_name='Power facilities')
+
 
 # Standardize text formatting in relevant columns to avoid issues with default values
 data['Status'] = data['Status'].str.strip().str.title()
