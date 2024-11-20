@@ -4,3 +4,5 @@ pandas==2.2.3
 plotly==5.24.1
 gunicorn
 dash-tools
+setuptools~=74.1.1
+packaging~=24.1
