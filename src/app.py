@@ -299,6 +299,6 @@ def update_figure(status, type_selection, geography, view_mode, year_range, capa
     )
     return min_capacity, max_capacity, capacity_range, capacity_marks, fig, map_fig
 
-# Run the app
+# Run the app. listening on 0.0.0.0
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=10000, debug=True)
