@@ -230,6 +230,34 @@ def update_figure(status, type_selection, geography, view_mode, year_range, capa
         xaxis_title = "Total Capacity (Million MW)"
         text_format = lambda x: f"{x / 1e6:.2f}M"
     
+    # fig = px.bar(
+    #     grouped_data,
+    #     y=geography,
+    #     x='Capacity (MW)',
+    #     color='Type',
+    #     title=f'Power Generation Capacity by {geography}',
+    #     labels={'Capacity (MW)': xaxis_title, geography: geography},
+    #     text=grouped_data['Capacity (MW)'].apply(text_format)
+    # )
+    # fig.update_traces(textposition='outside')
+    # fig.update_layout(
+    #     legend=dict(orientation="h", y=-0.1, x=0.5, xanchor="center") if geography == "Region" else dict(orientation="h", y=-0.05, x=0.5, xanchor="center"),
+    #     height=500 if geography == "Region" else 2000,
+    #     margin=dict(l=10, r=10, t=50, b=10),
+    #     xaxis_title=xaxis_title,
+    #     yaxis=dict(
+    #         categoryorder='total ascending',
+    #         tickmode='linear',
+    #         dtick=1
+    #     )
+    # )
+     # Dynamically adjust the height based on the number of rows
+    num_categories = grouped_data[geography].nunique()
+    min_height = 500  # Minimum height for the graph
+    max_height = 2000  # Maximum height for the graph
+    row_height = 30  # Height per category
+    dynamic_height = min(max_height, max(min_height, num_categories * row_height))
+    
     fig = px.bar(
         grouped_data,
         y=geography,
@@ -241,8 +269,8 @@ def update_figure(status, type_selection, geography, view_mode, year_range, capa
     )
     fig.update_traces(textposition='outside')
     fig.update_layout(
-        legend=dict(orientation="h", y=-0.1, x=0.5, xanchor="center") if geography == "Region" else dict(orientation="h", y=-0.05, x=0.5, xanchor="center"),
-        height=500 if geography == "Region" else 2000,
+        legend=dict(orientation="h", y=-0.25, x=0.5, xanchor="center") if geography == "Region" else dict(orientation="h", y=-0.1, x=0.5, xanchor="center"),
+        height=dynamic_height,
         margin=dict(l=10, r=10, t=50, b=10),
         xaxis_title=xaxis_title,
         yaxis=dict(
